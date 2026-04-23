@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width"/>
+<title>Timetable S4</title>
+<style>
+.timetable {
+	font-family: monospace;
+	font-size: 1.6rem;
+}
+.timetable :is(td, th) {
+	padding: 0rem 0.5em;
+}
+.day.digits {
+	text-align: right;
+}
+
+.exam .day {
+	text-transform: uppercase;
+}
+
+.break {
+	color: #888;
+}
+
+.exam {
+	font-weight: bold;
+	color: #111;
+}
+
+.exam.today {
+	color: #f00;
+}
+
+.break.today {
+	color: #fa0;
+}
+
+.break .day {
+	text-transform: lowercase;
+}
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: #222;
+	}
+.break {
+	color: #999;
+}
+
+.exam {
+	color: #fafafa;
+}
+
+.exam.today {
+	color: #f33;
+}
+
+.break.today {
+	color: #fa0;
+}
+}
+</style>
+<head>
+<body>
+<pre id="timetable_source" hidden>
+23 thu ---
+24 fri ---
+25 sat ---
+26 sun ---
+27 mon ---
+28 tue ---
+29 wed ---
+30 thu ---
+ 1 fri ---
+ 2 sat ---
+ 3 sun ---
+ 4 mon ---
+ 5 tue ---
+ 6 wed ---
+ 7 THU  Database (2h)
+ 8 FRI  Python (2h)
+ 9 sat ---
+10 sun ---
+11 MON  Software (2h)
+12 TUE  Automation (2h)
+13 WED  Cyberlaw (1.5h)
+14 thu ---
+15 fri ---
+16 sat ---
+17 sun ---
+18 MON  English (1.5h)
+</pre>
+<table class="timetable">
+<tbody id="gen"></tbody>
+</table>
+<script>
+	const src = document.querySelector("#timetable_source").innerText;
+	const gen = document.querySelector("#gen");
+	var today = (new Date()).getDate();
+	src.trim().split("\n").forEach(
+		line => {
+			const msg = document.createElement("tr");
+			const exam = line.match(/^\s?(\d+)\s(\w+)\s(.*)$/);
+			if (exam) {
+				const day_digits = exam[1];
+				const day = exam[2];
+				const title = exam[3];
+				if (title != "---") {
+					msg.innerHTML = `\
+<td class="day digits">${day_digits}</td>
+<td class="day">${day}</td>
+<td class="title">${title}</td>`;
+					msg.classList.add("exam");
+				}
+				else {
+					msg.innerHTML = `\
+<td class="day digits">${day_digits}</td>
+<td class="day">${day}</td>
+<td class="marker">---</td>`;
+					msg.classList.add("break");
+				}
+				if (today != null && day_digits == today) {
+					msg.classList.add("today");
+					msg.innerHTML += `<td class="marker">&lt;--- today</td>`
+					today = null;
+				}
+			}
+			gen.appendChild(msg);
+		}
+	);
+</script>
+</body>

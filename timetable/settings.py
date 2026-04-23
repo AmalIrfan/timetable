@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-d4#s_-so0a0qk5deu6gk#+wdzotl-$j@_61zkyl!36tr6+@2-n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['amalirfan.pythonanywhere.com']
+ALLOWED_HOSTS = ['amalirfan.pythonanywhere.com', 'localhost']
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'timetable.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ BASE_DIR / 'templates' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
