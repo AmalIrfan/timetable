@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Course Outline</title>
+		<style>
+			:root {
+				/* Default to Light Mode for accessibility and fallback */
+				--bg: #f8f9fa;
+				--card-bg: #ffffff;
+				--fg: #1c1c1e;
+				--sub-fg: #3c3c3e;
+			}
+
+			/* Explicit Dark Mode styling */
+			@media (prefers-color-scheme: dark) {
+				:root {
+					--bg: #121212;
+					--card-bg: #1e1e1e;
+					--fg: #f8f8f8;
+					--sub-fg: #e5e5e5;
+				}
+			}
+
+			html {
+				height: 100%;
+			}
+
+			body {
+				font-family: serif;
+				background-color: var(--bg);
+				color: var(--fg);
+				margin: 0;
+				padding: 40px;
+				box-sizing: border-box;
+				display: grid;
+				place-items: center;
+				min-height: 100%;
+			}
+
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(500px, 1fr));
+				gap: 30px;
+			}
+
+			.card {
+				background-color: var(--card-bg);
+				border-radius: 4px;
+				padding: 24px;
+				border-top: 4px solid;
+			}
+
+			/* SVG Colors mapped to CSS classes */
+			.card-teal {
+				border: 2px solid teal;
+			}
+			.card-yellowgreen {
+				border: 2px solid yellowgreen;
+			}
+			.card-crimson {
+				border: 2px solid crimson;
+			}
+			.card-burlywood {
+				border: 2px solid burlywood;
+			}
+			.card-skyblue {
+				border: 2px solid skyblue;
+			}
+			.card-plum {
+				border: 2px solid plum;
+			}
+
+			.card h2 {
+				margin-top: 0;
+				margin-bottom: 20px;
+				font-size: 1.5rem;
+				letter-spacing: 0.5px;
+			}
+
+			.card {
+				counter-reset: unit-list;
+			}
+
+			/* Upper Roman Numeral for Module Titles */
+			ol.modules {
+				list-style-type: upper-roman;
+				padding-left: 20px;
+				margin: 0;
+			}
+
+			ol.modules > li {
+				font-weight: bold;
+				margin-bottom: 12px;
+			}
+
+			/* Sub-list formatting for regular items */
+			ol.items {
+				list-style-type: none;
+				padding-left: 20px;
+				margin-top: 6px;
+				font-weight: normal;
+				color: var(--sub-fg);
+			}
+
+			ol.items > li {
+				margin-bottom: 8px;
+				font-size: 0.9rem;
+				line-height: 1.4;
+				counter-increment: unit-list;
+				position: relative;
+			}
+
+			ol.items > li::before {
+				content: counter(unit-list) ". ";
+				position: absolute;
+				padding-right: 4px;
+				box-sizing: border-box;
+				right: 100%;
+			}
+
+			/* Nested alphabetical items e.g., 2.a, 2.b */
+			ol.sub-items {
+				list-style-type: lower-alpha;
+				padding-left: 18px;
+				margin-top: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grid-container">
+			<!-- Card 1: Database -->
+			<div class="card card-teal">
+				<h2>Database</h2>
+				<ol class="modules">
+					<li>
+						Database System - Concept
+						<ol class="items">
+							<li>What is a database and what are its characteristics?</li>
+							<li>
+								<ol class="sub-items">
+									<li>
+										Explain who actors on the scene and workers behind the scene
+										are.
+									</li>
+									<li>What are the advantages of using DBMS approach?</li>
+									<li>Differentiate file system and database.</li>
+								</ol>
+							</li>
+							<li>
+								<ol class="sub-items">
+									<li>Explain what data models, schemas, and instances are.</li>
+									<li>
+										Describe three-schema architecture and how it achieves data
+										independence.
+									</li>
+								</ol>
+							</li>
+							<li>What are database languages and interfaces?</li>
+							<li>
+								Differentiate structured, semi-structured and unstructured
+								databases.
+							</li>
+						</ol>
+					</li>
+					<li>Database Design
+						<ol class="items" >
+							<li>
+								<ol class="sub-items">
+									<li>What is an ER model?</li>
+									<li>What are entity sets and entity attributes?</li>
+									<li>Describe ER model notations.</li>
+								</ol>
+							</li>
+							<li>
+								<ol class="sub-items">
+									<li>Explain relationships in ER model and relationship constraints:
+										<ul>
+											<li>Cardinality constraints.</li>
+											<li>Participation constraints.</li>
+										</ul>
+									</li>
+									<li>Describe ER model relationship notation.</li>
+									<li>What are weak entities?</li>
+								</ol>
+							</li>
+							<li>
+								<ol class="sub-items">
+									<li>What is a relational model?</li>
+									<li>Define: 
+										<ul>
+											<li>Domains, attributes, tuples, and relations.</li>
+											<li>Values and NULLs in tuples.</li>
+										</ul>
+									</li>
+								</ol>
+							</li>
+							<li>
+								<ol class="sub-items">
+									<li>Explain relational model constraints.</li>
+									<li>What are relational database schemas?</li>
+								</ol>
+							</li>
+							<li>
+								What are atomic domain and normalization in relational database design?
+							</li>
+						</ol>
+					</li>
+					<li>Query Languages
+						<ol class="items">
+							<li>What is SQL?</li>
+							<li>What is DDL, and how is it used to define and change table structures?</li>
+							<li>What is DML, and how is it used to manupulate data from single tables and multiple tables?</li>
+							<li>
+								<ol class="sub-items">
+									<li>What are nested queries? Differentiate correlated and non-correlated nested queries.</li>
+									<li>What are aggregate functions? How is GROUP BY, ORDER BY, and HAVING used with them?</li>
+									<li>What are views, assertions, and triggers.</li>
+								</ol>
+							</li>
+							<li>Describe NoSQL.</li>
+							<li>
+								<ol class="sub-items">
+									<li>Explain characteristics of:
+										<ul>
+											<li>Key-value databases like Redis</li>
+											<li>Document databases like MongoDB</li>
+										</ul>
+									</li>
+								</ol>
+							</li>
+						</ol>
+					</li>
+					<li>Transaction Processing, Concurrency Control
+						<ol class="items">
+							<li>Explain transactions and their use cases.</li>
+							<li>What are advantages of transactions?</li>
+							<li>How are schedules characterized based on recoverablitiy &amp; serializability?</li>
+							<li>How to use transactions in SQL?</li>
+							<li>What is concurrency control and two-phase locking?</li>
+						</ol>
+					</li>
+				</ol>
+			</div>
+
+			<!-- Card 2: Python -->
+			<div class="card card-yellowgreen">
+				<h2>Python</h2>
+				<ol class="modules">
+					<li>Introduction to Python and Control Flow Statements</li>
+					<li>Introduction to Functions &amp; Modules</li>
+					<li>Introduction to Strings, Lists, &amp; Dictionaries</li>
+					<li>Introduction to Scientific Computing in Python</li>
+				</ol>
+			</div>
+
+			<!-- Card 3: Software -->
+			<div class="card card-crimson">
+				<h2>Software</h2>
+				<ol class="modules">
+					<li>The Software Process</li>
+					<li>Requirement Engineering</li>
+					<li>System Modelling, Architectural Design</li>
+					<li>Testing, Maintenance and Re-Engineering</li>
+				</ol>
+			</div>
+
+			<!-- Card 4: Automation -->
+			<div class="card card-burlywood">
+				<h2>Automation</h2>
+				<ol class="modules">
+					<li>Introduction to Automation</li>
+					<li>Control Systems</li>
+					<li>Industrial Robotics</li>
+					<li>Automation and Robotics: Present and Future</li>
+				</ol>
+			</div>
+
+			<!-- Card 5: Cyberlaw -->
+			<div class="card card-skyblue">
+				<h2>Cyberlaw</h2>
+				<ol class="modules">
+					<li>Introduction to Cyberspace</li>
+					<li>Cybercrimes and Cybercriminals</li>
+					<li>Indian Cyberlaw</li>
+					<li>Basics of IT Law and its Regulatory Mechanisms</li>
+				</ol>
+			</div>
+
+			<!-- Card 6: English -->
+			<div class="card card-plum">
+				<h2>English</h2>
+				<ol class="modules">
+					<li>Human Rights</li>
+					<li>Professional Ethics and Scientific Temper</li>
+					<li>Understanding Gender</li>
+					<li>Mindfulness</li>
+				</ol>
+			</div>
+		</div>
+	</body>
+</html>
